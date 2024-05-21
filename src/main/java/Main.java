@@ -63,9 +63,14 @@ class HomeWork {
     }
 
     //Задание 10
-    public static void arraySwap() {
-        int arr[] = new int[10];
-    }
+     static int[] arraySwap(int[] ints) {
+        int[] arr = new int[10];
+         for (int i = 0; i < arr.length; i++) {
+             if (arr[i] == 0) arr[i] = 1;
+             else arr[i] = 0;
+         }
+         return ints;
+     }
 
 
 
@@ -140,9 +145,10 @@ class HomeWork {
 
         //выводим в командную строку решение задания 10
         System.out.println("\nЗадание 10");
-        //int[] arr1=arraySwap(); {
+        int[] arr1=arraySwap(1, 1, 0, 0, 1, 0, 1, 1, 0, 0);
+            System.out.println(arr1);
 
-        //}
+
 
     }
 }
