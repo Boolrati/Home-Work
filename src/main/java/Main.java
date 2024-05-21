@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class HomeWork {
     //Задание 1
 
@@ -21,8 +23,7 @@ class HomeWork {
 
     //Задание 4
     public static boolean compareNumbers(int a, int b) {
-        if (a >= b) return true;
-        else return false;
+        return a >= b;
     }
 
     //Задание 5
@@ -63,14 +64,20 @@ class HomeWork {
     }
 
     //Задание 10
-     static int[] arraySwap(int[] ints) {
-        int[] arr = new int[10];
-         for (int i = 0; i < arr.length; i++) {
-             if (arr[i] == 0) arr[i] = 1;
-             else arr[i] = 0;
-         }
-         return ints;
-     }
+    private static int[] arraySwap(int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8, int i9) {
+        int[] arr;
+        arr = new int[10];
+        for (int h = 0; h < arr.length; h++) {
+            if (arr[h] == 0) {
+                arr[h] =1;
+            }
+            else if (arr[h] ==1) {
+                arr[h] = 0;
+            }
+        }
+
+        return arr;
+    }
 
 
 
@@ -85,7 +92,7 @@ class HomeWork {
         //вывод в командную строку решения задания 2
         System.out.println("ЗАДАНИЕ 2:");
         boolean c = checkSumSign(-4, 3);
-        if (c == true) {
+        if (c) {
             System.out.println("Сумма положительная");
         } else {
             System.out.println("Сумма отрицательная");
@@ -100,7 +107,7 @@ class HomeWork {
 
         //выводим в командную строку решение задания 4
         System.out.println("Задание 4");
-        boolean dif = compareNumbers(-3, 3);
+        boolean dif = compareNumbers(4, 3);
         if (dif) {
             System.out.println("a>=b");
         } else {
@@ -146,9 +153,11 @@ class HomeWork {
         //выводим в командную строку решение задания 10
         System.out.println("\nЗадание 10");
         int[] arr1=arraySwap(1, 1, 0, 0, 1, 0, 1, 1, 0, 0);
-            System.out.println(arr1);
+            System.out.println(Arrays.toString(arr1));
 
 
 
     }
+
+
 }
