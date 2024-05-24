@@ -1,8 +1,14 @@
+package com.aston.lecture1;
+
 import java.util.Arrays;
 
 class HomeWork {
-    //Задание 1
+    /*
+    в первой части все задачи будут иметь только логику и объявление метода.
+    Вызов метода для печати в консоль результатов всех задач будет в методе main во второй части
+    */
 
+    //Задание 1
     public static String printThreeWords(String words) {
         return "Три слова в столбец: " + words;
     }
@@ -45,12 +51,10 @@ class HomeWork {
     }
 
     //Задание 8 - не решенное
-    public static void counterPrint(String text, int times) {
-        for (int a = 0; a < times; a++) {
-            //return text, times;
-            System.out.println(text);
-        }
-        //return text;
+    public static String counterPrint(String text, int times) {
+        //System.out.println(text);
+        for (int a = 0; a < times; a++) return text;
+        return text;
     }
 
     //Задание 9
@@ -64,19 +68,53 @@ class HomeWork {
     }
 
     //Задание 10
-    private static int[] arraySwap(int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8, int i9) {
-        int[] arr;
-        arr = new int[10];
+    public static int[] arraySwap(int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8, int i9) {
+        int[] arr = new int[10];
         for (int h = 0; h < arr.length; h++) {
-            if (arr[h] == 0) {
-                arr[h] =1;
-            }
-            else if (arr[h] ==1) {
-                arr[h] = 0;
-            }
+            arr[h]= arr[h]==1? 0:1;
+            //if (arr[h] != 1) {
+               // if (arr[h] == 0) arr[h]=1;
+           // } else {
+            //    arr[h] = 0;
+            //}
         }
-
         return arr;
+    }
+
+    //Задание 11
+    public static int[] array100(){
+       int n[] = new int[100];
+       for (int k = 0; k < n.length; k++) {
+           n[k] = k+1;
+       }
+        return n;
+    }
+
+    //Задание 12
+    public static int[] arrMult(int i11, int i12, int i13,int i14, int i15,int i16, int i17, int i18, int i19, int i20, int i21, int i22){
+    int m[] = new int[12];
+    for (int l = 0; l < m.length; l++) {
+        if (m[l] <6){
+            m[l] = m[l]*2;
+        }
+    }
+        return m;
+    }
+
+    //Задание 13
+    public static int[][] arrCross(int x, int y) {
+        int[][] table = new int[5][5];
+        for (int s = 0; s < table.length; s++) {
+            table[s][table.length - s - 1] = 1;
+        }
+        for (int s = 0; s < table.length; s++) {
+            for (int r = 0; r < table.length; r++) {
+                table[s][s] = 1;
+            }
+            System.out.println();
+        }
+        return table;
+
     }
 
 
@@ -138,10 +176,10 @@ class HomeWork {
         }
 
         //выводим в командную строку решение задания 8
-        //System.out.println("\nЗадание 8");
-        //x = counterPrint("Обратный отсчет: ", 9);
+        System.out.println("\nЗадание 8");
+        String x = counterPrint("Обратный отсчет: ", 9);
         //for (int y = 0; y < x; y++) {
-        //System.out.println(x);
+        System.out.println(x);
 
         //}
 
@@ -154,6 +192,22 @@ class HomeWork {
         System.out.println("\nЗадание 10");
         int[] arr1=arraySwap(1, 1, 0, 0, 1, 0, 1, 1, 0, 0);
             System.out.println(Arrays.toString(arr1));
+
+
+        //выводим в командную строку решение задания 11
+        System.out.println("\nЗадание 11");
+        int[] arr2 = array100();
+        System.out.println(Arrays.toString(arr2));
+
+        //выводим в командную строку решение задания 12
+        System.out.println("\nЗадание 12");
+        int[] arr3 = arrMult(1,5,3,2,11,4,5,2,4,8,9,1);
+        System.out.println(Arrays.toString(arr3));
+
+        //выводим в командную строку решение задания 13
+        System.out.println("\nЗадание 13");
+        int[][] arr4 = arrCross(5,5);
+        System.out.println(Arrays.deepToString(arr4));
 
 
 
