@@ -16,8 +16,11 @@ class HomeWork {
     //Задание 2
 
     public static boolean checkSumSign(int a, int b) {
-        if (a + b >= 0) return true;
-        else return false;
+        if (a + b >= 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     //Задание 3
@@ -51,72 +54,81 @@ class HomeWork {
     }
 
     //Задание 8 - не решенное
-    public static String counterPrint(String text, int times) {
-        //System.out.println(text);
-        for (int a = 0; a < times; a++) return text;
-        return text;
+    public static void counterPrint(String text, int times) {
+        for (int a = 0; a < times; a++) {
+            System.out.println(text+(times - a));
+        }
     }
 
     //Задание 9
     public static boolean isLeapYear(int y) {
         boolean year4 = (y % 4 == 0);
         boolean yearHundred = (y % 100 != 0);
-        boolean year4Hundred = (y % 400 ==0);
+        boolean year4Hundred = (y % 400 == 0);
         if (year4 || yearHundred && year4Hundred) {
             return true;
         } else return false;
     }
 
     //Задание 10
-    public static int[] arraySwap(int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8, int i9) {
-        int[] arr = new int[10];
+    private static void arraySwap(int[] arr) {
         for (int h = 0; h < arr.length; h++) {
-            arr[h]= arr[h]==1? 0:1;
-            //if (arr[h] != 1) {
-               // if (arr[h] == 0) arr[h]=1;
-           // } else {
-            //    arr[h] = 0;
-            //}
+            arr[h] = (arr[h] == 1) ? 0 : 1;
+
         }
-        return arr;
     }
 
     //Задание 11
-    public static int[] array100(){
-       int n[] = new int[100];
-       for (int k = 0; k < n.length; k++) {
-           n[k] = k+1;
-       }
-        return n;
+    private static void array100(int[] arr) {
+        for (int k = 0; k < arr.length; k++) {
+            arr[k] = k + 1;
+        }
     }
 
     //Задание 12
-    public static int[] arrMult(int i11, int i12, int i13,int i14, int i15,int i16, int i17, int i18, int i19, int i20, int i21, int i22){
-    int m[] = new int[12];
-    for (int l = 0; l < m.length; l++) {
-        if (m[l] <6){
-            m[l] = m[l]*2;
+    private static void arrMult(int[] arr) {
+        for (int l = 0; l < arr.length; l++) {
+            if (arr[l] < 6) {
+                arr[l] = arr[l] * 2;
+            }
         }
-    }
-        return m;
     }
 
     //Задание 13
-    public static int[][] arrCross(int x, int y) {
-        int[][] table = new int[5][5];
-        for (int s = 0; s < table.length; s++) {
-            table[s][table.length - s - 1] = 1;
-        }
-        for (int s = 0; s < table.length; s++) {
-            for (int r = 0; r < table.length; r++) {
-                table[s][s] = 1;
+    private static void arrCrossFill(int[][] arr) {
+        for (int s = 0; s < arr.length; s++) {
+            for (int h = 0, q = arr.length - 1; h < arr.length; h++, q--) {
+                if (s == h || s == q) {
+                    arr[s][h] = 1;
+                } else {
+                    arr[s][h] = 0;
+                }
             }
-            System.out.println();
         }
-        return table;
-
     }
 
+    private static void arrCrossPrint(int[][] arr) {
+        for (int s = 0; s < arr.length; s++) {
+            System.out.print("[");
+            for (int r = 0; r < arr.length; r++) {
+                System.out.print(arr[s][r] + "  ");
+            }
+            System.out.print("\b\b]");
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    //Задание 14
+    private static int[] arrLenValue(int len, int initialValue) {
+        int[] arr = new int[len];
+        for (int t = 0; t < arr.length; t++) {
+            arr[t] = initialValue;
+        }
+
+
+        return arr;
+    }
 
 
     //Далее следует вывод в командную строку решений задач путем вызова из метода main
@@ -177,9 +189,8 @@ class HomeWork {
 
         //выводим в командную строку решение задания 8
         System.out.println("\nЗадание 8");
-        String x = counterPrint("Обратный отсчет: ", 9);
-        //for (int y = 0; y < x; y++) {
-        System.out.println(x);
+        counterPrint("Обратный отсчет: ", 9);
+        //System.out.println(counterPrint());
 
         //}
 
@@ -190,28 +201,37 @@ class HomeWork {
 
         //выводим в командную строку решение задания 10
         System.out.println("\nЗадание 10");
-        int[] arr1=arraySwap(1, 1, 0, 0, 1, 0, 1, 1, 0, 0);
-            System.out.println(Arrays.toString(arr1));
+        int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
+        arraySwap(arr);
+        System.out.println(Arrays.toString(arr));
 
 
         //выводим в командную строку решение задания 11
         System.out.println("\nЗадание 11");
-        int[] arr2 = array100();
+        int[] arr2 = new int[100];
+        array100(arr2);
         System.out.println(Arrays.toString(arr2));
 
         //выводим в командную строку решение задания 12
         System.out.println("\nЗадание 12");
-        int[] arr3 = arrMult(1,5,3,2,11,4,5,2,4,8,9,1);
+        int[] arr3 = {5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        arrMult(arr3);
         System.out.println(Arrays.toString(arr3));
 
         //выводим в командную строку решение задания 13
         System.out.println("\nЗадание 13");
-        int[][] arr4 = arrCross(5,5);
-        System.out.println(Arrays.deepToString(arr4));
+        int x = 5;
+        int[][] arr4 = new int[x][x];
+        arrCrossFill(arr4);
+        arrCrossPrint(arr4);
 
-
-
+        //выводим в командную строку решение задания 14
+        System.out.println("\nЗадание 14");
+        int arr6 = 10;
+        int arr7 = 7;
+        int[] result = arrLenValue(arr6, arr7);
+        System.out.println(Arrays.toString(result));
     }
-
-
 }
+
+
