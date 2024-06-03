@@ -9,29 +9,37 @@ class HomeWork {
     */
 
     //Задание 1
-    public static String printThreeWords(String words) {
-        return "Три слова в столбец: " + words;
+    public static String printThreeWords(/*String words*/) {
+        return "\nТри слова в столбец: " + "\nOrange\nBanana\nApple\n";
     }
 
     //Задание 2
 
     public static boolean checkSumSign(int a, int b) {
         if (a + b >= 0) {
-            return true;
+            System.out.println("Сумма положительная");
         } else {
-            return false;
+            System.out.println("Сумма отрицательная");
         }
+        return a + b >= 0;
     }
 
     //Задание 3
 
     private static int printColor(int a) {
-        //return "Значение метода printColor(): " + a;
+        if (a <= 0) System.out.println("Красный\n");
+        else if (a > 0 && a <= 100) System.out.println("Желтый\n");
+        else if (a > 100) System.out.println("Зеленый\n");
         return a;
     }
 
     //Задание 4
     public static boolean compareNumbers(int a, int b) {
+        if (a >= b) {
+            System.out.println("a>=b");
+        } else {
+            System.out.println("a<b");
+        }
         return a >= b;
     }
 
@@ -42,21 +50,26 @@ class HomeWork {
     }
 
     //Задание 6
-    public static boolean posNegative(int a) {
-        if (a >= 0) return true;
-        else return false;
+    public static void posNegative(int a) {
+        if (a>=0) {
+            System.out.println("Число положительное");
+        } else {
+            System.out.println("Число отрицательное");
+        }
     }
 
     //Задание 7
-    public static boolean trueNegative(int a) {
-        if (a < 0) return true;
-        else return false;
+    public static void trueNegative(int a) {
+        if (a<0) System.out.println(true);
+        else {
+            System.out.println(false);
+        }
     }
 
     //Задание 8 - не решенное
     public static void counterPrint(String text, int times) {
         for (int a = 0; a < times; a++) {
-            System.out.println(text+(times - a));
+            System.out.println(text + (times - a));
         }
     }
 
@@ -125,8 +138,6 @@ class HomeWork {
         for (int t = 0; t < arr.length; t++) {
             arr[t] = initialValue;
         }
-
-
         return arr;
     }
 
@@ -136,33 +147,23 @@ class HomeWork {
 
         //вывод в командную строку решения задания 1
         System.out.print("ЗАДАНИЕ 1: ");
-        String words = printThreeWords("\nOrange\nBanana\nApple\n");
+        String words = printThreeWords();
         System.out.println(words);
 
         //вывод в командную строку решения задания 2
         System.out.println("ЗАДАНИЕ 2:");
-        boolean c = checkSumSign(-4, 3);
-        if (c) {
-            System.out.println("Сумма положительная");
-        } else {
-            System.out.println("Сумма отрицательная");
-        }
+        checkSumSign(-4, 3);
+        System.out.println();
 
         //выводим в командную строку решение задания 3
         System.out.println("\nЗАДАНИЕ 3:");
-        int b = printColor(500);
-        if (b <= 0) System.out.println("Красный\n");
-        else if (b > 0 && b <= 100) System.out.println("Желтый\n");
-        else if (b > 100) System.out.println("Зеленый\n");
+        printColor(-100);
+        System.out.println();
 
         //выводим в командную строку решение задания 4
         System.out.println("Задание 4");
-        boolean dif = compareNumbers(4, 3);
-        if (dif) {
-            System.out.println("a>=b");
-        } else {
-            System.out.println("a<b");
-        }
+        compareNumbers(4, 5);
+        System.out.println();
 
         //выводим в командную строку решение задания 5
         System.out.println("\nЗадание 5");
@@ -171,28 +172,16 @@ class HomeWork {
 
         //выводим в командную строку решение задания 6
         System.out.println("\nЗадание 6");
-        boolean num = posNegative(-50);
-        if (num) {
-            System.out.println("Число положительное");
-        } else {
-            System.out.println("Число отрицательное");
-        }
+        posNegative(-50);
+        System.out.println();
 
         //выводим в командную строку решение задания 7
         System.out.println("\nЗадание 7");
-        boolean num1 = trueNegative(0);
-        if (num1) {
-            System.out.println(num1);
-        } else {
-            System.out.println(false);
-        }
+        trueNegative(-8);
 
         //выводим в командную строку решение задания 8
         System.out.println("\nЗадание 8");
         counterPrint("Обратный отсчет: ", 9);
-        //System.out.println(counterPrint());
-
-        //}
 
         //выводим в командную строку решение задания 9
         System.out.println("\nЗадание 9");
@@ -233,5 +222,6 @@ class HomeWork {
         System.out.println(Arrays.toString(result));
     }
 }
+
 
 
