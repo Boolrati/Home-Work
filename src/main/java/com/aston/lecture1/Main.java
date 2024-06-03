@@ -74,13 +74,13 @@ class HomeWork {
     }
 
     //Задание 9
-    public static boolean isLeapYear(int y) {
+    public static void isLeapYear(int y) {
         boolean year4 = (y % 4 == 0);
         boolean yearHundred = (y % 100 != 0);
         boolean year4Hundred = (y % 400 == 0);
         if (year4 || yearHundred && year4Hundred) {
-            return true;
-        } else return false;
+            System.out.println("True");
+        } else System.out.println(false);
     }
 
     //Задание 10
@@ -185,15 +185,14 @@ class HomeWork {
 
         //выводим в командную строку решение задания 9
         System.out.println("\nЗадание 9");
-        boolean d = isLeapYear(800);
-        System.out.println(d);
+        isLeapYear(800);
+        System.out.println();
 
         //выводим в командную строку решение задания 10
         System.out.println("\nЗадание 10");
         int[] arr = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};
         arraySwap(arr);
         System.out.println(Arrays.toString(arr));
-
 
         //выводим в командную строку решение задания 11
         System.out.println("\nЗадание 11");
