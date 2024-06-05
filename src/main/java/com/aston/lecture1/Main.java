@@ -15,38 +15,50 @@ class HomeWork {
 
     //Задание 2
 
-    public static boolean checkSumSign(int a, int b) {
+    public static void checkSumSign() {
+        int a = 10;
+        int b = -11;
         if (a + b >= 0) {
             System.out.println("Сумма положительная");
         } else {
             System.out.println("Сумма отрицательная");
         }
-        return a + b >= 0;
     }
 
     //Задание 3
 
-    private static int printColor(int a) {
-        if (a <= 0) System.out.println("Красный\n");
-        else if (a > 0 && a <= 100) System.out.println("Желтый\n");
-        else if (a > 100) System.out.println("Зеленый\n");
-        return a;
+    private static void printColor() {
+        int a = 101;
+        if (a <= 0) {
+            System.out.println("Красный\n");
+        }
+        else if (a > 0 && a <= 100) {
+            System.out.println("Желтый\n");
+        }
+        else if (a > 100) {
+            System.out.println("Зеленый\n");
+        }
     }
 
     //Задание 4
-    public static boolean compareNumbers(int a, int b) {
+    public static void compareNumbers() {
+        int a = 400;
+        int b = 500;
         if (a >= b) {
             System.out.println("a>=b");
         } else {
             System.out.println("a<b");
         }
-        return a >= b;
     }
 
     //Задание 5
     public static boolean sumInRange(int a, int b) {
-        if (a + b >= 10 && a + b <= 20) return true;
-        else return false;
+        if (a + b >= 10 && a + b <= 20) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     //Задание 6
@@ -60,13 +72,15 @@ class HomeWork {
 
     //Задание 7
     public static void trueNegative(int a) {
-        if (a<0) System.out.println(true);
+        if (a<0) {
+            System.out.println(true);
+        }
         else {
             System.out.println(false);
         }
     }
 
-    //Задание 8 - не решенное
+    //Задание 8
     public static void counterPrint(String text, int times) {
         for (int a = 0; a < times; a++) {
             System.out.println(text + (times - a));
@@ -74,14 +88,17 @@ class HomeWork {
     }
 
     //Задание 9
-    public static void isLeapYear(int y) {
-        boolean year4 = (y % 4 == 0);
-        boolean yearHundred = (y % 100 != 0);
-        boolean year4Hundred = (y % 400 == 0);
-        if (year4 || yearHundred && year4Hundred) {
-            System.out.println("True");
-        } else System.out.println(false);
-    }
+    public static boolean isLeapYear(int y) {
+        if (y % 400 == 0) {
+            return true;
+        } else if (y % 100 == 0) {
+            return false;
+        } else if (y % 4 == 0) {
+            return true;
+        } else {
+            return false;
+        }
+        }
 
     //Задание 10
     private static void arraySwap(int[] arr) {
@@ -152,22 +169,22 @@ class HomeWork {
 
         //вывод в командную строку решения задания 2
         System.out.println("ЗАДАНИЕ 2:");
-        checkSumSign(-4, 3);
+        checkSumSign();
         System.out.println();
 
         //выводим в командную строку решение задания 3
         System.out.println("\nЗАДАНИЕ 3:");
-        printColor(-100);
+        printColor();
         System.out.println();
 
         //выводим в командную строку решение задания 4
         System.out.println("Задание 4");
-        compareNumbers(4, 5);
+        compareNumbers();
         System.out.println();
 
         //выводим в командную строку решение задания 5
         System.out.println("\nЗадание 5");
-        boolean range = sumInRange(5, 10);
+        boolean range = sumInRange(11, 10);
         System.out.println(range);
 
         //выводим в командную строку решение задания 6
@@ -185,8 +202,8 @@ class HomeWork {
 
         //выводим в командную строку решение задания 9
         System.out.println("\nЗадание 9");
-        isLeapYear(800);
-        System.out.println();
+        boolean year = isLeapYear(104);
+        System.out.println(year);
 
         //выводим в командную строку решение задания 10
         System.out.println("\nЗадание 10");
