@@ -17,5 +17,29 @@ public class Main {
         System.out.println("Всего создано животных: " +Animal.getCountAnimal());
         System.out.println("Всего котов: "+Cat.getCountCat());
         System.out.println("Всего собак: "+Dog.getCountDog());
+        System.out.println("\nЗадание 2\n");
+        Cat[] pets = {
+                new Cat("Мышка", 7),
+                new Cat("Дымка", 10),
+                new Cat("Ласка", 15),
+                new Cat("Шанти", 5),
+                new Cat("Ромашка", 8),
+                new Cat("Кэсси", 12),
+                new Cat("Васька", 5)
+        };
+        Bowl bowl = new Bowl(50);
+        for (Cat c : pets){
+            System.out.println(c);
+        }
+        System.out.println("\n" + bowl);
+        System.out.println("\nдобавить еды в миску");
+        bowl.addFood(10);
+        System.out.println(bowl);
+        System.out.println("Коты едят из миски:");
+        for(Cat c : pets) {
+            c.eat(bowl);
+            System.out.println(c);
+            System.out.println(bowl);
+        }
     }
 }

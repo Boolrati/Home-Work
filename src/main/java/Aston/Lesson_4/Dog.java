@@ -1,7 +1,7 @@
 package Aston.Lesson_4;
 
 public class Dog extends Animal {
-    String name;
+    private String name;
     static int countDog = 0;
 
     public Dog(String name){
@@ -15,7 +15,7 @@ public class Dog extends Animal {
             System.out.println(name+ " не может пробежать больше " + DOG_MAX_RUN + " м.");
         } else {
             System.out.println(name+ " пробежал " + distance + " м.");
-        }
+        }System.out.println(" ");
 
     }
 
