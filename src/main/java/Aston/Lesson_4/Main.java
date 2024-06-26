@@ -2,6 +2,8 @@ package Aston.Lesson_4;
 
 public class Main {
     public static void main(String[] args) {
+        //Задача 1
+
         Animal catBarsik = new Cat("Барсик");
         catBarsik.swim(150);
         catBarsik.run(190);
@@ -17,6 +19,9 @@ public class Main {
         System.out.println("Всего создано животных: " +Animal.getCountAnimal());
         System.out.println("Всего котов: "+Cat.getCountCat());
         System.out.println("Всего собак: "+Dog.getCountDog());
+
+        //Задача 2
+
         System.out.println("\nЗадание 2\n");
         Cat[] pets = {
                 new Cat("Мышка", 7),
@@ -41,5 +46,17 @@ public class Main {
             System.out.println(c);
             System.out.println(bowl);
         }
+
+        //Задача 3
+
+        Circle circle = new Circle(6);
+        Rectangle rectangle = new Rectangle(3,4);
+        Triangle triangle = new Triangle(7,8,9);
+
+        System.out.println(" ");
+        System.out.println("Задание 3\n");
+        System.out.println(circle);
+        System.out.println(rectangle);
+        System.out.println(triangle);
     }
 }
