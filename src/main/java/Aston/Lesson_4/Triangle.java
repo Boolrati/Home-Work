@@ -24,6 +24,6 @@ public class Triangle implements Shape{
 
         @Override
     public String toString(){
-        return "Треугольник: его периметр = " + calculatePerimeter() + ", его площадь = " + calculateArea() + ", цвет заливки - " + FILL_COLOR + ", цвет линий - " + BORDER_COLOR;
+        return "Треугольник: его периметр = " + calculatePerimeter() + ", его площадь = " + calculateArea() + ", цвет заливки - " + FILL_COLOR3 + ", цвет линий - " + BORDER_COLOR3;
     }
 }

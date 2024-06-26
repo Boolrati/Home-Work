@@ -21,6 +21,6 @@ public class Rectangle implements Shape{
 
     @Override
     public String toString(){
-        return "Прямоугольник: его периметр = " + calculatePerimeter() + ", его площадь = " + calculateArea() + ", цвет заливки - " + FILL_COLOR + ", цвет линий - " + BORDER_COLOR;
+        return "Прямоугольник: его периметр = " + calculatePerimeter() + ", его площадь = " + calculateArea() + ", цвет заливки - " + FILL_COLOR2 + ", цвет линий - " + BORDER_COLOR2;
     }
 }

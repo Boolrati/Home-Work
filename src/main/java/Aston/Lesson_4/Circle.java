@@ -18,6 +18,6 @@ public class Circle implements Shape {
 
     @Override
     public String toString(){
-        return "Круг: Периметр = " + calculatePerimeter() + ", его площадь = " + calculateArea() + ", цвет заливки - " + FILL_COLOR + ", цвет линий - " + BORDER_COLOR;
+        return "Круг: Периметр = " + calculatePerimeter() + ", его площадь = " + calculateArea() + ", цвет заливки - " + FILL_COLOR1 + ", цвет линий - " + BORDER_COLOR1;
     }
 }
