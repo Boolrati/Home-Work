@@ -2,8 +2,8 @@ package Aston.Lesson_5;
 
 
 public class MyArrayDataException extends Exception {
-    private int row;
-    private int col;
+    private final int row;
+    private final int col;
 
     public MyArrayDataException(String message, int row, int col) {
         super(message);
