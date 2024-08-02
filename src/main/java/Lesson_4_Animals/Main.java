@@ -4,10 +4,10 @@ public class Main {
     public static void main(String[] args) {
         //Задача 1
         System.out.println("\nЗадание 1\n");
-        Animal catBarsik = new Cat("Барсик", 0);
+        Animal catBarsik = new Cat("Барсик");
         catBarsik.swim(150);
         catBarsik.run(190);
-        Animal catPushok = new Cat("Пушок", 0);
+        Animal catPushok = new Cat("Пушок");
         catPushok.swim(5);
         catPushok.run(220);
         Animal dogBobik = new Dog("Бобик");
@@ -24,25 +24,25 @@ public class Main {
 
         System.out.println("\nЗадание 2\n");
         Cat[] pets = {
-                new Cat("Мышка", 7),
-                new Cat("Дымка", 10),
-                new Cat("Ласка", 15),
-                new Cat("Шанти", 5),
-                new Cat("Ромашка", 8),
-                new Cat("Кэсси", 12),
-                new Cat("Васька", 5)
+                new Cat("Мышка"),
+                new Cat("Дымка"),
+                new Cat("Ласка"),
+                new Cat("Шанти"),
+                new Cat("Ромашка"),
+                new Cat("Кэсси"),
+                new Cat("Васька")
         };
-        Bowl bowl = new Bowl(50);
+        Bowl bowl = new Bowl(70);
         for (Cat c : pets) {
             System.out.println(c);
         }
         System.out.println("\n" + bowl);
         System.out.println("\nдобавить еды в миску");
-        bowl.addFood(10);
+        bowl.addFood(20);
         System.out.println(bowl);
         System.out.println("Коты едят из миски:");
         for (Cat c : pets) {
-            c.eat(bowl);
+            c.eat(bowl, 15);
             System.out.println(c);
             System.out.println(bowl);
         }

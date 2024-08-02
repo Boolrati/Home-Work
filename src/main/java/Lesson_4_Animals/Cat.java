@@ -3,32 +3,27 @@ package Lesson_4_Animals;
 public class Cat extends Animal {
     private String name;
     private boolean satiety; //сытость кота
-    private int eat; //сколько кот хочет съесть из миски
     static int countCat = 0;
 
-    /*public Cat(String name){
-        super();
-        countCat++;
-        this.name = name;
-    }*/
-
-    public Cat(String name, int eat) {
+    public Cat(String name) {
         super();
         countCat++;
         this.name = name;
         this.satiety = false; //изначально сытость = false
-        this.eat = eat;  //сколько котик хочет съесть из миски
     }
 
     @Override
     public String toString() {
-        return "Кот: " + name + " | хочет съесть: " + eat + "| Сытость: " + satiety;
+        return "Кот: " + name + /*" | хочет съесть: " + foodToEatCount +*/ "| Сытость: " + satiety;
     }
 
-    public void eat(Bowl bowl) {
-        if (bowl.getFoodCount() > eat) {
-            bowl.decreaseFoodCount(eat);
+    public void eat(Bowl bowl, int foodToEatCount) {
+        if (bowl.getFoodCount() > foodToEatCount) {
+            bowl.decreaseFoodCount(foodToEatCount);
             satiety = true;
+            System.out.println(name + " съел " + foodToEatCount + " еды");
+        } else {
+            System.out.println("Не хватает еды в миске");
         }
     }
 
