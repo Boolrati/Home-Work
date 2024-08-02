@@ -18,7 +18,7 @@ public class Cat extends Animal {
     }
 
     public void eat(Bowl bowl, int foodToEatCount) {
-        if (bowl.getFoodCount() > foodToEatCount) {
+        if (bowl.getFoodCount() >= foodToEatCount) {
             bowl.decreaseFoodCount(foodToEatCount);
             satiety = true;
             System.out.println(name + " съел " + foodToEatCount + " еды");

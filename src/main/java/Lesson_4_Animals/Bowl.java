@@ -12,9 +12,9 @@ public class Bowl {
         return "Миска: " + foodCount;
     }
 
-    void decreaseFoodCount(int eat) {
-        if (foodCount >= eat) {
-            foodCount -= eat;
+    void decreaseFoodCount(int foodToEatCount) {
+        if (foodCount >= foodToEatCount) {
+            foodCount -= foodToEatCount;
         }
     }
 
