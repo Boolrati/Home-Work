@@ -40,7 +40,7 @@ public class Main {
         System.out.println("\nдобавить еды в миску");
         bowl.addFood(20);
         System.out.println(bowl);
-        System.out.println("Коты едят из миски:");
+        System.out.println("\nКоты едят из миски:");
         for (Cat c : pets) {
             c.eat(bowl, 15);
             System.out.println(c);
