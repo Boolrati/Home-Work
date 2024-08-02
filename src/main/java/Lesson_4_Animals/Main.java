@@ -1,13 +1,13 @@
-package Aston.Lesson_4;
+package Lesson_4_Animals;
 
 public class Main {
     public static void main(String[] args) {
         //Задача 1
-
-        Animal catBarsik = new Cat("Барсик");
+        System.out.println("\nЗадание 1\n");
+        Animal catBarsik = new Cat("Барсик", 0);
         catBarsik.swim(150);
         catBarsik.run(190);
-        Animal catPushok = new Cat("Пушок");
+        Animal catPushok = new Cat("Пушок", 0);
         catPushok.swim(5);
         catPushok.run(220);
         Animal dogBobik = new Dog("Бобик");
@@ -16,9 +16,9 @@ public class Main {
         Animal dogBarbos = new Dog("Барбос");
         dogBarbos.swim(550);
         dogBarbos.run(300);
-        System.out.println("Всего создано животных: " +Animal.getCountAnimal());
-        System.out.println("Всего котов: "+Cat.getCountCat());
-        System.out.println("Всего собак: "+Dog.getCountDog());
+        System.out.println("Всего создано животных: " + Animal.getCountAnimal());
+        System.out.println("Всего котов: " + Cat.getCountCat());
+        System.out.println("Всего собак: " + Dog.getCountDog());
 
         //Задача 2
 
@@ -33,7 +33,7 @@ public class Main {
                 new Cat("Васька", 5)
         };
         Bowl bowl = new Bowl(50);
-        for (Cat c : pets){
+        for (Cat c : pets) {
             System.out.println(c);
         }
         System.out.println("\n" + bowl);
@@ -41,22 +41,10 @@ public class Main {
         bowl.addFood(10);
         System.out.println(bowl);
         System.out.println("Коты едят из миски:");
-        for(Cat c : pets) {
+        for (Cat c : pets) {
             c.eat(bowl);
             System.out.println(c);
             System.out.println(bowl);
         }
-
-        //Задача 3
-
-        Circle circle = new Circle(6);
-        Rectangle rectangle = new Rectangle(3,4);
-        Triangle triangle = new Triangle(7,8,9);
-
-        System.out.println(" ");
-        System.out.println("Задание 3\n");
-        System.out.println(circle);
-        System.out.println(rectangle);
-        System.out.println(triangle);
     }
 }
