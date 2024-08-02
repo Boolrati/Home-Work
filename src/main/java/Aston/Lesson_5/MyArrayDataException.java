@@ -9,7 +9,6 @@ public class MyArrayDataException extends Exception {
         super(message);
         this.row = row;
         this.col = col;
-
     }
 
     public int getRow() {
