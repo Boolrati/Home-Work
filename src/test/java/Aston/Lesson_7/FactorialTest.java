@@ -13,10 +13,10 @@ class FactorialTest {
         int expected = 2;
         assertEquals(expected,actual);
     }
-
+    @Test
     void number5() {
         Factorial factorial = new Factorial();
-        int actual = factorial.number(2);
+        int actual = factorial.number(5);
         int expected = 120;
         assertEquals(expected,actual);
     }
