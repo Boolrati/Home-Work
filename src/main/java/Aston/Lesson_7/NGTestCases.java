@@ -1,7 +1,7 @@
 package Aston.Lesson_7;
+import org.testng.annotations.Test;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.testng.Assert.assertEquals;
 
 public class NGTestCases {
 
