@@ -21,9 +21,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
        button.click();
     }
 
-    @AfterAll
+    /*@AfterAll
     public static void tearDown(){
         driver.close();
         driver.quit();
-    }
+    }*/
 }
