@@ -19,7 +19,6 @@ public class MtsBy extends BaseSeleniumTest {
     @Test
     @Order(1)
     public void checkATitle() {
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         WebElement element1 = driver.findElement(By.xpath("//div[@class='pay__wrapper']/h2"));
         assertEquals("Онлайн пополнение\nбез комиссии", element1.getText());
     }
