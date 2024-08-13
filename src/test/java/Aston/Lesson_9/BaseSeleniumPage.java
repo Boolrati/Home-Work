@@ -1,4 +1,4 @@
-package org.example;
+package Aston.Lesson_9;
 
 import org.openqa.selenium.WebDriver;
 
