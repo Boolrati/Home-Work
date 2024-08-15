@@ -92,7 +92,6 @@ public class MTSBy extends BaseSeleniumTest {
 
     @Test
     @Order(6)
-    //Test
     public void checkCreditCardFields() {
         WebElement cardNumber = driver.findElement(By.cssSelector("label.ng-tns-c46-1.ng-star-inserted"));
         assertEquals("Номер карты", cardNumber.getText());

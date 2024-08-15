@@ -13,7 +13,6 @@ public class BaseSeleniumTest {
     protected static WebDriver driver;
 
     @BeforeAll
-    //test
     public static void setUp() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
