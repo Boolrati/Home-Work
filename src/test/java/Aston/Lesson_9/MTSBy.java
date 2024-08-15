@@ -121,5 +121,4 @@ public class MTSBy extends BaseSeleniumTest {
         String toolTipText = tooltipElement.getText();
         assertEquals("Три цифры с оборотной стороны карты", toolTipText);
     }
-
 }
