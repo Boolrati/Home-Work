@@ -8,6 +8,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import page_object.MainPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -21,6 +22,7 @@ public class MTSBy extends BaseSeleniumTest {
     @Test
     @Order(1)
     public void checkPlaceHolder1() {
+        MainPage mainPage = new MainPage(driver);
         driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]")).click();
         driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[1]/p")).click();
         String phoneNumber = driver.findElement(By.xpath("//*[@id=\"connection-phone\"]")).getAttribute("placeholder");
