@@ -6,9 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import page_object.MainPage;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,49 +19,55 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class MtsBy extends BaseSeleniumTest {
+
     @Test
     @Order(1)
-    public void checkATitle() {
-        WebElement element1 = driver.findElement(By.xpath("//div[@class='pay__wrapper']/h2"));
-        assertEquals("Онлайн пополнение\nбез комиссии", element1.getText());
+    public void checkTitle() {
+        MainPage mainPage = new MainPage(driver);
+        assertEquals("Онлайн пополнение\nбез комиссии", mainPage.getPaySectionTitleLocator().getText());
     }
 
     @Test
     @Order(2)
-    public void checkBLogo() {
-        boolean visa = driver.findElement((By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[2]/ul/li[1]/img"))).isDisplayed();
-        assertTrue(visa);
-        boolean visaVerified = driver.findElement((By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[2]/ul/li[2]/img"))).isDisplayed();
-        assertTrue(visaVerified);
-        boolean masterCard = driver.findElement((By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[2]/ul/li[3]/img"))).isDisplayed();
-        assertTrue(masterCard);
-        boolean masterCardSecure = driver.findElement((By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[2]/ul/li[4]/img"))).isDisplayed();
-        assertTrue(masterCardSecure);
-        boolean belCard = driver.findElement((By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[2]/ul/li[5]/img"))).isDisplayed();
-        assertTrue(belCard);
+    public void checkLogo() {
+        MainPage mainPage = new MainPage(driver);
+        assertTrue(mainPage.getVisaIconLocator().isDisplayed());
+        assertTrue(mainPage.getVisaVerifiedIconLocator().isDisplayed());
+        assertTrue(mainPage.getMasterCardIconLocator().isDisplayed());
+        assertTrue(mainPage.getMasterCardSecureIconLocator().isDisplayed());
+        assertTrue(mainPage.getBelCardIconLocator().isDisplayed());
     }
 
     @Test
     @Order(3)
-    public void checkCLink() {
-        String link = driver.findElement(By.linkText("Подробнее о сервисе")).getAttribute("href");
-        driver.findElement(By.linkText("Подробнее о сервисе")).click();
+    public void checkLink() {
+        MainPage mainPage = new MainPage(driver);
+        String linkText = mainPage.getLink().getAttribute("href");
+        mainPage.getLink().click();
         String actualLink = driver.getCurrentUrl();
-        assertEquals(link, actualLink);
+        assertEquals(linkText, actualLink);
     }
 
     @Test
     @Order(4)
-    public void checkDContinueBtn() throws InterruptedException {
+    public void checkContinueBtn() throws InterruptedException {
         driver.navigate().back();
-        driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]")).click();
-        driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[1]/p")).click();
-        driver.findElement(By.xpath("//*[@id=\"connection-phone\"]")).sendKeys("297777777");
-        driver.findElement(By.xpath("//*[@id=\"connection-sum\"]")).sendKeys("100");
-        driver.findElement(By.xpath("//*[@id=\"pay-connection\"]/button")).click();
-        Thread.sleep(5000);
-        //вот здесь я намучался с этим тестом. implicitlyWait оказалось не работает с элементами которые присутствуют на странице, но не проявляются.
-        driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
+        MainPage mainPage = new MainPage(driver);
+        mainPage.getDropDown().click();
+        mainPage.getDropDownFirst().click();
+        mainPage.getPhoneNumber().sendKeys("297777777");
+        mainPage.getSum().sendKeys("100");
+        mainPage.getContinueButton().click();
+        //Thread.sleep(5000);
+        
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        By frame_locator = By.className("bepaid-iframe");
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frame_locator));
+        //WebElement elementLocated = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
+        //WebElement elementLocated1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("bepaid-iframe")));
+
+
+        //driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
         WebElement popup = driver.findElement(By.cssSelector("body > app-root > div"));
         assertTrue(popup.isDisplayed());
     }
