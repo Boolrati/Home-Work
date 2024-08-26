@@ -5,13 +5,18 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import page_object.MainPage;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,6 +24,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class MtsBy extends BaseSeleniumTest {
+    static final String NUMBER = "297777777";
+    static final String RUBLES = "100";
 
     @Test
     @Order(1)
@@ -50,25 +57,19 @@ public class MtsBy extends BaseSeleniumTest {
 
     @Test
     @Order(4)
-    public void checkContinueBtn() throws InterruptedException {
+    public void checkContinueBtn() {
         driver.navigate().back();
         MainPage mainPage = new MainPage(driver);
         mainPage.getDropDown().click();
         mainPage.getDropDownFirst().click();
-        mainPage.getPhoneNumber().sendKeys("297777777");
-        mainPage.getSum().sendKeys("100");
+        mainPage.getPhoneNumber().sendKeys(NUMBER);
+        mainPage.getSum().sendKeys(RUBLES);
         mainPage.getContinueButton().click();
-        //Thread.sleep(5000);
-        
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        By frame_locator = By.className("bepaid-iframe");
-        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frame_locator));
-        //WebElement elementLocated = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("bepaid-iframe")));
-        //WebElement elementLocated1 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("bepaid-iframe")));
-
-
-        //driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
-        WebElement popup = driver.findElement(By.cssSelector("body > app-root > div"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(mainPage.getIframe()));
+        wait.until(ExpectedConditions.visibilityOf(mainPage.getIframeByTag()));
+        WebElement popup = mainPage.getIframeByCss();
         assertTrue(popup.isDisplayed());
+
     }
 }

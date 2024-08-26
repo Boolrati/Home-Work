@@ -76,7 +76,7 @@ public class MainPage {
         return phoneNumber;
     }
 
-    @FindBy(id="connection-sum")
+    @FindBy(id = "connection-sum")
     private WebElement sum;
 
     public WebElement getSum() {
@@ -90,10 +90,30 @@ public class MainPage {
         return continueButton;
     }
 
+    @FindBy(className = "bepaid-iframe")
+    private WebElement iframe;
+
+    public WebElement getIframe() {
+        return iframe;
+    }
+
+    @FindBy(tagName = "app-payment-container")
+    private WebElement iframeByTag;
+
+    public WebElement getIframeByTag() {
+        return iframeByTag;
+    }
+
+    @FindBy(css = "body > app-root > div")
+    private WebElement iframeByCss;
+
+    public WebElement getIframeByCss() {
+        return iframeByCss;
+    }
+
     public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
-
 
 
 }

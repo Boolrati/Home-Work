@@ -4,12 +4,18 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 abstract public class BaseSeleniumTest {
@@ -17,19 +23,29 @@ abstract public class BaseSeleniumTest {
 
     @BeforeAll
     public static void setUp() {
+
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         BaseSeleniumPage.setDriver(driver);
+        driver.manage().deleteAllCookies();
         driver.get("https://mts.by");
-        WebElement button = driver.findElement(By.id("cookie-agree"));
-        button.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement cookiePopup = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("cookie-agree")));
 
+        try {
+
+            WebElement button = driver.findElement(By.id("cookie-agree"));
+            button.click();
+        } catch (ElementNotInteractableException e) {
+            System.out.println("куки не найдены");
+        }
     }
 
     @AfterAll
     public static void tearDown() {
+
         driver.close();
         driver.quit();
     }
