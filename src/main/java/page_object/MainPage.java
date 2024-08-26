@@ -6,6 +6,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class MainPage {
+
+    @FindBy(id = "cookie-agree")
+    private WebElement cookieAccept;
+
+    public WebElement getCookieAccept() {
+        return cookieAccept;
+    }
+
     @FindBy(xpath = "//div[@class='pay__wrapper']/h2")
     private WebElement paySectionTitleLocator;
 
