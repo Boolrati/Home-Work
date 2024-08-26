@@ -8,7 +8,11 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import page_object.MainPage;
+
+import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -17,110 +21,106 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MTSBy extends BaseSeleniumTest {
 
+    final static String PHONE_NUMBER_TEXT = "Номер телефона";
+    final static String PHONE_NUMBER = "297777777";
+    static final String RUBLES = "100";
+    final static String SUM_TEXT = "Сумма";
+    final static String EMAIL = "E-mail для отправки чека";
+    final static String CONNECTION_PHONE_NUMBER = "Номер абонента";
+    final static String INSTALMENTS_NUMBER = "Номер счета на 44";
+    final static String ARREARS_NUMBER = "Номер счета на 2073";
+    final static String POPUP_RUBLES_BYN = "100.00 BYN";
+    final static String POPUP_CONFIRM_BUTTON_TEXT = "Оплатить 100.00 BYN";
+    final static String POPUP_PAYMENT_DETAILS = "Оплата: Услуги связи Номер:375297777777";
+    final static String POPUP_CARD_NUMBER_PLACEHOLDER = "Срок действия";
+    final static String POPUP_CARD_CVC_PLACEHOLDER = "CVC";
+    final static String POPUP_CARD_HOLDER_NAME = "Имя держателя (как на карте)";
+    final static String POPUP_CARD_CVC_TEXT = "Три цифры с оборотной стороны карты";
     //Task 1
 
     @Test
     @Order(1)
     public void checkPlaceHolder1() {
         MainPage mainPage = new MainPage(driver);
-        driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]")).click();
-        driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[1]/p")).click();
-        String phoneNumber = driver.findElement(By.xpath("//*[@id=\"connection-phone\"]")).getAttribute("placeholder");
-        assertEquals("Номер телефона", phoneNumber);
-        String sum = driver.findElement(By.xpath("//*[@id=\"connection-sum\"]")).getAttribute("placeholder");
-        assertEquals("Сумма", sum);
-        String email = driver.findElement(By.xpath("//*[@id=\"connection-email\"]")).getAttribute("placeholder");
-        assertEquals("E-mail для отправки чека", email);
+        mainPage.getDropDown().click();
+        mainPage.getDropDownFirst().click();
+        assertEquals(PHONE_NUMBER_TEXT, mainPage.getConnectionPhoneNumber().getAttribute("placeholder"));
+        assertEquals(SUM_TEXT, mainPage.getConnectionSum().getAttribute("placeholder"));
+        assertEquals(EMAIL, mainPage.getConnectionEmail().getAttribute("placeholder"));
     }
 
     @Test
     @Order(2)
     public void checkPlaceHolder2() {
-        driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]")).click();
-        driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[2]/p")).click();
-        String phoneNumber1 = driver.findElement(By.cssSelector("input#internet-phone.phone")).getAttribute("placeholder");
-        assertEquals("Номер абонента", phoneNumber1);
-        String sum1 = driver.findElement((By.cssSelector("input#connection-sum.total_rub"))).getAttribute("placeholder");
-        assertEquals("Сумма", sum1);
-        String email1 = driver.findElement(By.cssSelector("input#connection-email.email")).getAttribute("placeholder");
-        assertEquals("E-mail для отправки чека", email1);
+        MainPage mainPage = new MainPage(driver);
+        mainPage.getDropDown().click();
+        mainPage.getDropDownSecond().click();
+        assertEquals(CONNECTION_PHONE_NUMBER, mainPage.getInternetPhoneNumber().getAttribute("placeholder"));
+        assertEquals(SUM_TEXT, mainPage.getInternetSum().getAttribute("placeholder"));
+        assertEquals(EMAIL, mainPage.getInternetEmail().getAttribute("placeholder"));
     }
 
     @Test
     @Order(3)
     public void checkPlaceHolder3() {
-        driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]")).click();
-        driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[3]/p")).click();
-        String score = driver.findElement(By.cssSelector("input#score-instalment.score")).getAttribute("placeholder");
-        assertEquals("Номер счета на 44", score);
-        String sum2 = driver.findElement((By.cssSelector("input#instalment-sum.total_rub"))).getAttribute("placeholder");
-        assertEquals("Сумма", sum2);
-        String email2 = driver.findElement(By.cssSelector("input#instalment-email.email")).getAttribute("placeholder");
-        assertEquals("E-mail для отправки чека", email2);
+        MainPage mainPage = new MainPage(driver);
+        mainPage.getDropDown().click();
+        mainPage.getDropDownThird().click();
+        assertEquals(INSTALMENTS_NUMBER, mainPage.getInstalmentPhoneNumber().getAttribute("placeholder"));
+        assertEquals(SUM_TEXT, mainPage.getInstalmentSum().getAttribute("placeholder"));
+        assertEquals(EMAIL, mainPage.getInstalmentEmail().getAttribute("placeholder"));
     }
 
     @Test
     @Order(4)
     public void checkPlaceHolder4() {
-        driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]")).click();
-        driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[4]/p")).click();
-        String score1 = driver.findElement(By.cssSelector("input#score-arrears.score")).getAttribute("placeholder");
-        assertEquals("Номер счета на 2073", score1);
-        String sum3 = driver.findElement((By.cssSelector("input#arrears-sum.total_rub"))).getAttribute("placeholder");
-        assertEquals("Сумма", sum3);
-        String email3 = driver.findElement(By.cssSelector("input#arrears-email.email")).getAttribute("placeholder");
-        assertEquals("E-mail для отправки чека", email3);
+        MainPage mainPage = new MainPage(driver);
+        mainPage.getDropDown().click();
+        mainPage.getDropDownFourth().click();
+        assertEquals(ARREARS_NUMBER, mainPage.getArrearsNumber().getAttribute("placeholder"));
+        assertEquals(SUM_TEXT, mainPage.getArrearsSum().getAttribute("placeholder"));
+        assertEquals(EMAIL, mainPage.getArrearsEmail().getAttribute("placeholder"));
     }
 
     //Task 2
 
     @Test
     @Order(5)
-    public void checkSumCorrectness() throws InterruptedException {
-        driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]")).click();
-        driver.findElement(By.xpath("//*[@id=\"pay-section\"]/div/div/div[2]/section/div/div[1]/div[1]/div[2]/ul/li[1]/p")).click();
-        driver.findElement(By.xpath("//*[@id=\"connection-phone\"]")).sendKeys("297777777");
-        driver.findElement(By.xpath("//*[@id=\"connection-sum\"]")).sendKeys("100");
-        driver.findElement(By.xpath("//*[@id=\"pay-connection\"]/button")).click();
-        Thread.sleep(5000);
-        driver.switchTo().frame(driver.findElement(By.className("bepaid-iframe")));
-        WebElement headerSum = driver.findElement(By.xpath("/html/body/app-root/div/div/div/app-payment-container/section/div/div/div[1]/span[1]"));
-        assertEquals("100.00 BYN", headerSum.getText());
-        WebElement buttonSum = driver.findElement(By.cssSelector("button.colored.disabled"));
-        assertEquals("Оплатить 100.00 BYN", buttonSum.getText());
-        WebElement phoneNumber = driver.findElement(By.xpath("/html/body/app-root/div/div/div/app-payment-container/section/div/div/div[2]/span"));
-        assertEquals("Оплата: Услуги связи Номер:375297777777", phoneNumber.getText());
+    public void checkSumCorrectness() {
+        MainPage mainPage = new MainPage(driver);
+        mainPage.getDropDown().click();
+        mainPage.getDropDownFirst().click();
+        mainPage.getConnectionPhoneNumber().sendKeys(PHONE_NUMBER);
+        mainPage.getConnectionSum().sendKeys(RUBLES);
+        mainPage.getContinueButton().click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(mainPage.getIframe()));
+        wait.until(ExpectedConditions.visibilityOf(mainPage.getIframeByTag()));
+        assertEquals(POPUP_RUBLES_BYN, mainPage.getPopupHeaderSum().getText());
+        assertEquals(POPUP_CONFIRM_BUTTON_TEXT, mainPage.getPopupConfirmButtonText().getText());
+        assertEquals(POPUP_PAYMENT_DETAILS, mainPage.getPopupPaymentDetailsText().getText());
     }
 
     @Test
     @Order(6)
     public void checkCreditCardFields() {
-        WebElement cardNumber = driver.findElement(By.cssSelector("label.ng-tns-c46-1.ng-star-inserted"));
-        assertEquals("Номер карты", cardNumber.getText());
-        boolean cardVisa = driver.findElement((By.xpath("/html/body/app-root/div/div/div/app-payment-container/section/div/app-card-page/div/div[1]/app-card-input/form/div[1]/div[1]/app-input/div/div/div[2]/div/div/img[1]"))).isDisplayed();
-        assertTrue(cardVisa);
-        boolean cardMasterCard = driver.findElement((By.xpath("/html/body/app-root/div/div/div/app-payment-container/section/div/app-card-page/div/div[1]/app-card-input/form/div[1]/div[1]/app-input/div/div/div[2]/div/div/img[2]"))).isDisplayed();
-        assertTrue(cardMasterCard);
-        boolean cardBelKart = driver.findElement((By.xpath("/html/body/app-root/div/div/div/app-payment-container/section/div/app-card-page/div/div[1]/app-card-input/form/div[1]/div[1]/app-input/div/div/div[2]/div/div/img[3]"))).isDisplayed();
-        assertTrue(cardBelKart);
-        boolean cardMir = driver.findElement((By.xpath("/html/body/app-root/div/div/div/app-payment-container/section/div/app-card-page/div/div[1]/app-card-input/form/div[1]/div[1]/app-input/div/div/div[2]/div/div/div"))).isDisplayed();
-        assertTrue(cardMir);
-        WebElement cardValidUntil = driver.findElement(By.cssSelector("label.ng-tns-c46-4.ng-star-inserted"));
-        assertEquals("Срок действия", cardValidUntil.getText());
-        WebElement cardCVC = driver.findElement(By.cssSelector("label.ng-tns-c46-5.ng-star-inserted"));
-        assertEquals("CVC", cardCVC.getText());
-        WebElement cardHolderName = driver.findElement(By.cssSelector("label.ng-tns-c46-3.ng-star-inserted"));
-        assertEquals("Имя держателя (как на карте)", cardHolderName.getText());
+        MainPage mainPage = new MainPage(driver);
+        assertEquals("Номер карты", mainPage.getPopupCardNumberPlaceholder().getText());
+        assertTrue(mainPage.getPopupVisaIcon().isDisplayed());
+        assertTrue(mainPage.getPopupMasterCardIcon().isDisplayed());
+        assertTrue(mainPage.getPopupBelKartIcon().isDisplayed());
+        assertTrue(mainPage.getPopupCardMirIcon().isDisplayed());
+        assertEquals(POPUP_CARD_NUMBER_PLACEHOLDER, mainPage.getPopupCardValidUntil().getText());
+        assertEquals(POPUP_CARD_CVC_PLACEHOLDER, mainPage.getPopupCardCvc().getText());
+        assertEquals(POPUP_CARD_HOLDER_NAME, mainPage.getPopupCardHolderName().getText());
     }
 
     @Test
     @Order(7)
     public void checkCvcTooltip() {
-        WebElement element = driver.findElement(By.cssSelector("svg-icon.alert-icon.ng-tns-c61-0"));
+        MainPage mainPage = new MainPage(driver);
         Actions builder = new Actions(driver);
-        builder.moveToElement(element).build().perform();
-        WebElement tooltipElement = driver.findElement(By.cssSelector("span.tooltip.ng-tns-c61-0.show-tooltip.ng-star-inserted"));
-        String toolTipText = tooltipElement.getText();
-        assertEquals("Три цифры с оборотной стороны карты", toolTipText);
+        builder.moveToElement(mainPage.getPopupCvcTooltip()).build().perform();
+        assertEquals(POPUP_CARD_CVC_TEXT, mainPage.getPopupCvcTooltipText().getText());
     }
 }
