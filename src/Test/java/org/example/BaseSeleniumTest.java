@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import page_object.MainPage;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -35,8 +36,8 @@ abstract public class BaseSeleniumTest {
         WebElement cookiePopup = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("cookie-agree")));
 
         try {
-
-            WebElement button = driver.findElement(By.id("cookie-agree"));
+            MainPage mainPage = new MainPage(driver);
+            WebElement button = mainPage.getCookieAccept();
             button.click();
         } catch (ElementNotInteractableException e) {
             System.out.println("куки не найдены");
