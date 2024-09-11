@@ -5,8 +5,6 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,11 +17,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
-public class MTSBy extends BaseSeleniumTest {
+public class MtsBy extends BaseSeleniumTest {
 
     final static String PHONE_NUMBER_TEXT = "Номер телефона";
     final static String PHONE_NUMBER = "297777777";
-    static final String RUBLES = "100";
+    final static String RUBLES = "100";
     final static String SUM_TEXT = "Сумма";
     final static String EMAIL = "E-mail для отправки чека";
     final static String CONNECTION_PHONE_NUMBER = "Номер абонента";

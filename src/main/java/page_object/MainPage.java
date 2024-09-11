@@ -21,7 +21,7 @@ public class MainPage {
         return dropDown;
     }
 
-    @FindBy(xpath = "//*[@id=\"pay-section\"]//li[1]")
+    @FindBy(xpath = "//*[@id='pay-section']//li[1]")
     private WebElement dropDownFirst;
 
     public WebElement getDropDownFirst() {
@@ -49,7 +49,7 @@ public class MainPage {
         return connectionEmail;
     }
 
-    @FindBy(xpath = "//*[@id=\"pay-section\"]//li[2]")
+    @FindBy(xpath = "//*[@id='pay-section']//li[2]")
     private WebElement dropDownSecond;
 
     public WebElement getDropDownSecond() {
@@ -77,7 +77,7 @@ public class MainPage {
         return internetEmail;
     }
 
-    @FindBy(xpath = "//*[@id=\"pay-section\"]//li[3]")
+    @FindBy(xpath = "//*[@id='pay-section']//li[3]")
     private WebElement dropDownThird;
 
     public WebElement getDropDownThird() {
@@ -105,7 +105,7 @@ public class MainPage {
         return instalmentEmail;
     }
 
-    @FindBy(xpath = "//*[@id=\"pay-section\"]//li[4]")
+    @FindBy(xpath = "//*[@id='pay-section']//li[4]")
     private WebElement dropDownFourth;
 
     public WebElement getDropDownFourth() {
@@ -133,7 +133,7 @@ public class MainPage {
         return arrearsEmail;
     }
 
-    @FindBy(xpath = "//*[@id=\"pay-connection\"]/button")
+    @FindBy(xpath = "//*[@id='pay-connection']/button")
     private WebElement continueButton;
 
     public WebElement getContinueButton() {
@@ -182,28 +182,28 @@ public class MainPage {
         return popupCardNumberPlaceholder;
     }
 
-    @FindBy(xpath = "//app-input/div/div/div[2]/div/div/img[1]")
+    @FindBy(xpath = "//app-input//div[2]/div/div/img[1]")
     private WebElement popupVisaIcon;
 
     public WebElement getPopupVisaIcon() {
         return popupVisaIcon;
     }
 
-    @FindBy(xpath = "//app-input/div/div/div[2]/div/div/img[2]")
+    @FindBy(xpath = "//app-input//div[2]/div/div/img[2]")
     private WebElement popupMasterCardIcon;
 
     public WebElement getPopupMasterCardIcon() {
         return popupMasterCardIcon;
     }
 
-    @FindBy(xpath = "//app-input/div/div/div[2]/div/div/img[3]")
+    @FindBy(xpath = "//app-input//div[2]/div/div/img[3]")
     private WebElement popupBelKartIcon;
 
     public WebElement getPopupBelKartIcon() {
         return popupBelKartIcon;
     }
 
-    @FindBy(xpath = "//app-input/div/div/div[2]/div/div/div")
+    @FindBy(xpath = "//app-input/div//div[2]/div/div/div")
     private WebElement popupCardMirIcon;
 
     public WebElement getPopupCardMirIcon() {
